@@ -34,20 +34,20 @@
         'Authorization': "Basic MWh2MjhjZTQ1ZWpwbjgzZHNoMTloczV0OG46MTJma2VpaHEwa2FjbTc5bGlodDZudTRwMm5vbG1kYzBxZG9iN3ViN2kxdjlxbmRiajNqbg==",
         'Content-Type': 'application/x-www-form-urlencoded'
     };
-    let idToken;    
-    fetch(tokenEndpoint, {
-        method: 'POST',
-        headers: headers,
-        body: formData,
-    })
-    .then(response => response.json())
-    .then(data => {
-        idToken = data.id_token;
-        console.log(idToken);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+    // let idToken;    
+    // fetch(tokenEndpoint, {
+    //     method: 'POST',
+    //     headers: headers,
+    //     body: formData,
+    // })
+    // .then(response => response.json())
+    // .then(data => {
+    //     idToken = data.id_token;
+    //     console.log(idToken);
+    // })
+    // .catch(error => {
+    //     console.error(error);
+    // });
 
     // Inside the event listener for the "Test API Call" button
     // document.getElementById("testApiButton").addEventListener("click", () => {
