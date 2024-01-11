@@ -1,58 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <h3>You have successfully logged in</h3>
     <label for="tokenInput">Token:</label>
-    <input type="text" id="tokenInput" placeholder="Enter your token">
+    <input type="text" id="tokenInput" placeholder="Enter your token" />
 
     <button id="documentButton">Documentation Link</button>
-    
+
     <!-- Add a div element to display the API response -->
     <div id="apiResponse"></div>
-    <br>
-    <p><a href="https://test-collegesource.auth.us-east-2.amazoncognito.com/login?client_id=1hv28ce45ejpn83dsh19hs5t8n&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Fanushka-kokate-saras.github.io%2Facesstestcognito%2Flogged_in.html">Logout</a></p>
+    <br />
+    <p>
+      <a
+        href="https://test-collegesource.auth.us-east-2.amazoncognito.com/login?client_id=1hv28ce45ejpn83dsh19hs5t8n&response_type=code&scope=email+openid+phone&redirect_uri=https%3A%2F%2Fanushka-kokate-saras.github.io%2Facesstestcognito%2Flogged_in.html"
+        target="_blank"
+        >Logout</a
+      >
+    </p>
 
-</body>
-<script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const getCode = urlParams.get("code");
-    console.log(getCode);
-    
-    const tokenEndpoint = 'https://test-collegesource.auth.us-east-2.amazoncognito.com/oauth2/token';
-    const clientId = '1hv28ce45ejpn83dsh19hs5t8n'; // Your Cognito Client ID
-    const clientSecret = '12fkeihq0kacm79liht6nu4p2nolmdc0qdob7ub7i1v9qndbj3jn'; // Your Cognito Client Secret
-    const redirectUri = 'https://anushka-kokate-saras.github.io/acesstestcognito/logged_in.html'; // Your Redirect URI
-    
-    const formData = new URLSearchParams();
-    formData.append('grant_type', 'authorization_code');
-    formData.append('code', getCode);
-    formData.append('redirect_uri', redirectUri);
-    
-    // Add the client credentials to the headers
-    const headers = {
-        'Authorization': "Basic MWh2MjhjZTQ1ZWpwbjgzZHNoMTloczV0OG46MTJma2VpaHEwa2FjbTc5bGlodDZudTRwMm5vbG1kYzBxZG9iN3ViN2kxdjlxbmRiajNqbg==",
-        'Content-Type': 'application/x-www-form-urlencoded'
-    };
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const getCode = urlParams.get("code");
+      console.log(getCode);
 
-    document.getElementById('documentButton').addEventListener('click', function() {
-            const tokenInput = document.getElementById('tokenInput');
-            const token = tokenInput.value.trim();
-            const apiUrl = `https://saras.helpscoutdocs.com/authcallback?token=${token}&returnTo=article/4-test1`;
+      document
+        .getElementById("documentButton")
+        .addEventListener("click", function () {
+          const tokenInput = document.getElementById("tokenInput");
+          const token = tokenInput.value.trim();
 
-            // Make the GET request
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    // Display the API response in the div with id "apiResponse"
-                    document.getElementById('apiResponse').innerText = JSON.stringify(data, null, 2);
-                })
-                .catch(error => console.error('Error:', error));
+          // Modify the base URL and parameters for redirection
+          const redirectUrl =
+            "https://saras.helpscoutdocs.com/authcallback?token=" +
+            token +
+            "&returnTo=article/4-test1";
+
+          // Open the URL in a new tab
+          window.open(redirectUrl, "_blank");
         });
-
-</script>
+    </script>
+  </body>
 </html>
